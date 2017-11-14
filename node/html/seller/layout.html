@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>卖家管理系统</title>
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+      {% block style %}
+      {% endblock %}
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/seller/logout.js"></script>
+  </head>
+  <body>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="{{Active}}"><a href="/">商城首页</a></li>
+        <li role="presentation" class="{{homeActive}}"><a href="/admin">卖家首页</a></li>
+        <li role="presentation" class="{{goodsActive}}"><a href="/admin/goodslist">商品列表</a></li>
+        <li role="presentation" class="{{orderActive}}"><a href="/admin/orderlist">订单列表</a></li>
+        <li id="logout" role="presentation"><a href="#">退出</a></li>
+    </ul>
+    <div style="width:90%;margin:20px auto;">
+       {% block content %}
+       {% endblock %}
+
+    </div>
+   
+    
+
+        
+        
+  </body>
+</html>

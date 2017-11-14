@@ -1,0 +1,35 @@
+{% extends './layout.html' %}
+{% block css %}
+<style>
+  .produ{
+    float:left;
+    width:150px;
+    height:100px;
+     line-height:30px 
+  }
+</style>
+
+{% endblock %}
+{% block content %}    
+<div class="container">
+  <h1>商品详情</h1>
+  <div style="border:1px solid #cccccc;overflow:hidden">
+    
+    <h3 style="margin-left:20px;" id="title">{{title}}</h3>
+    <div class="produ" style="float:left;margin-left:20px;">
+      <h5 id="seller">{{seller}}</h5>
+      <p style="color:lightcoral" id="descri">￥{{descri}}</p>
+      
+      <p id="color_cre">{{color_cre}}</p>
+       <p id="meter_cre">{{meter_cre}}</p> 
+      <button id='buy' style="width:80px"><a >购买</a></button>
+    </div>
+    
+    <img id="detail_pic" src="{{pic}}" style="width:195px;height:180px;float:left;margin-bottom:20px;"/>
+    
+  </div>
+</div>
+{% endblock %}
+{% block js %}
+<script src="/public/js/buyer/details.js"></script>
+{% endblock %}

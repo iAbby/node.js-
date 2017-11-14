@@ -1,0 +1,74 @@
+{% extends './layout.html' %}
+
+
+{% block content %}
+
+<button type="button" class="btn btn-success"><a href="/admin/addgoods">添加商品</a></button>
+
+
+{% if isShow %}
+<table class="table">
+    <tr class="tr">
+        <th>名字</th>
+        <th>描述</th>
+        <th>尺码</th>
+        <th>款式</th>
+        <th>图片</th>
+        <th>操作</th>
+    </tr>
+    {% for goods in goodslist %}
+    
+    <tr>
+        <td>{{goods.name}}</td>
+        <td>{{goods.descri}}</td>
+        <td>
+            {% for style in goods.meter_cre %}
+            {{style}}&nbsp;
+            {% endfor %}
+        </td>
+        <td> 
+            {% for style in goods.color_cre %}
+            {{style}}&nbsp;
+            {% endfor %}
+        </td>
+        <td><img src="{{goods.pic}}" style="height:30px;width:50px"/></td>
+        <td>
+            <button id='{{goods._id.toString()}}' class="btn btn-danger delete">删除</button>
+            <button class="btn btn-warning">
+               <a href="/admin/modifygoods?goodsid={{goods._id.toString()}}">修改</a> 
+            </button>
+        </td>
+    </tr>
+    {% endfor %}
+
+
+</table>
+
+<nav aria-label="Page navigation" style="text-align:center">
+  <ul class="pagination">
+    <li class="{{preClass}}">
+      <a href="{{preUrl}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+
+    {% for urlObj in urls %}
+    <li class="{{urlObj.class}}"><a href="{{urlObj.url}}">{{urlObj.index}}</a></li>
+    {% endfor %}
+
+    <li  class="{{nextClass}}">
+      <a href="{{nextUrl}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+{% else %}
+<p>目前你还没有商品，请先添加商品</p>
+{% endif %}
+<script src="/public/js/seller/deletelist.js"></script> 
+{% endblock %}
+        
+ 

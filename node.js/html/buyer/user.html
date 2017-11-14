@@ -1,0 +1,102 @@
+{% extends './layout.html' %}
+
+{% block content %}
+{% if username %}
+<h1>我的购物车</h1>    
+<div class="container">
+
+  <div class="goods-list">
+      {% for goods in allgoods %}
+      <div class="goods-item">
+        <a href="/details?id={{goods.goods.toString()}}">
+          <img src="{{goods.pic}}" style="width:195px;height:180px"/>
+           <!-- console.log(result[0].selectSize);
+            console.log(result[0].selectStyle);
+            console.log(result[0].seller.sellername);
+            console.log(result[0].price); -->
+          <!-- <h4>{{goods.selectStyle}}</h4> -->
+          <!-- <p>{{allgoods.length}}</p> -->
+          <br>
+          <p>{{goods.price}}</p>
+          <p>{{goods.selectStyle}}&nbsp;{{goods.selectSize}}</p>
+          <p style="color:burlywood">{{goods.seller.sellername}}</p> 
+          <!-- <p>{{username}}</p> -->
+          
+        </a>
+      </div>
+      {% endfor %}
+      <div class="clear"></div>
+      <nav aria-label="Page navigation" style="text-align:center">
+        <ul class="pagination">
+          <li class="{{preClass}}">
+            <a href="{{preUrl}}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+
+          {% for urlObj in urls %}
+          <li class="{{urlObj.class}}"><a href="{{urlObj.url}}">{{urlObj.index}}</a></li>
+          {% endfor %}
+
+          <li  class="{{nextClass}}">
+            <a href="{{nextUrl}}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+    </nav>
+  </div> 
+</div>
+
+
+{% else%}
+<div style="margin:20px auto;margin-left:20px">
+  <h3>请先登录！</h3>
+  <br>
+  <h4><a href="/login">前往登录</a></h4>
+</div>
+  
+{% endif %}
+
+{% endblock %}
+{% block js %}
+<!-- <script src="/public/js/buyer/product.js"></script> -->
+{% endblock %}
+{% block css %}
+  <style>
+    a{
+      text-decoration: none;
+    }
+    .container{
+      width: 80%;
+      margin: 10px auto;
+      background: lavender;
+      padding: 0;
+    }
+
+    .goods-item{
+      text-align: center;
+      width: 25%;
+      padding: 10px;
+      float: left;
+    }
+    .clear{
+      clear:both;
+    }
+    .goods-item a{
+      display: block;
+    }
+    .goods-item img{
+      width: 100%;
+      display: block;
+    }
+    .goods-item h4{
+      color: lightcoral;
+    }
+    .goods-item p{
+      color: darkgray;
+    }
+  
+  </style>
+
+{% endblock %}

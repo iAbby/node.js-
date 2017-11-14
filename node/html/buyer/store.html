@@ -1,0 +1,78 @@
+{% extends './layout.html' %}
+{% block css %}
+<style>
+  .goods-item{
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    font-size: 18px
+  }
+  .goods-item img{
+    margin: 20px;
+    float: left
+  }
+  .clear{
+    clear: both;
+  }
+  .goods-item a{
+    overflow: hidden;
+    display: block;
+  }
+
+</style>
+{% endblock %}
+{% block content %}    
+<div class="container">
+  <h1>店铺列表</h1>
+  <div class="goods-list">
+      {% for goods in allgoods %}
+      <div class="goods-item">
+        <a href="/about?id={{goods._id.toString()}}" style="">
+          <img src="{{goods.logo}}" style="width:195px;height:180px"/>
+          <div style="float:left;margin-left:50px">
+              <h2>{{goods.sellername}}</h2>
+              <p>{{description}}</p>
+              <!-- <p>33{{goods.color_cre}}&nbsp;{{goods.meter_cre}}</p> -->
+              <!-- <p style="color:burlywood">44{{goods.seller.sellername}}</p>  -->
+              <!-- <p>{{username}}</p> -->
+              <br>
+              <br>
+              <br>
+             <p>进入该店铺</p>
+          </div>
+          
+          
+        </a>
+      </div>
+      <div class="clear"></div>
+      {% endfor %}
+      <div class="clear"></div>
+      <nav aria-label="Page navigation" style="text-align:center">
+        <ul class="pagination">
+          <li class="{{preClass}}">
+            <a href="{{preUrl}}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+
+          {% for urlObj in urls %}
+          <li class="{{urlObj.class}}"><a href="{{urlObj.url}}">{{urlObj.index}}</a></li>
+          {% endfor %}
+
+          <li  class="{{nextClass}}">
+            <a href="{{nextUrl}}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+    </nav>
+  </div> 
+
+
+
+
+
+
+
+
+</div>
+{% endblock %}

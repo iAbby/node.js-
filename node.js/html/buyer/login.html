@@ -1,0 +1,27 @@
+{% extends './layout.html' %}
+
+{% block content %}    
+<div class="container">
+  <h1>用户登录</h1>
+    <div>
+        <div class="form-group">
+            <label>用户名</label>
+            <input id="user" type="text" class="form-control" placeholder="请输入用户名">
+        </div>
+        <div class="form-group">
+            <label>密码</label>
+            <input id="psd" type="password" class="form-control" placeholder="请输入密码">
+        </div>
+
+        <button id="login-btn" type="button" class="btn btn-success btn-block">登录</button>
+    </div>
+    <br>
+    <div>
+        还没有账户？<a href="/register">请先注册！</a>
+    </div>
+
+</div>
+{% endblock %}
+{% block js %}
+<script src="/public/js/buyer/login.js"></script>
+{% endblock %}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>卖家管理系统</title>
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .register-box{
+          width: 80%;
+          margin: 20px auto;
+      }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h1>商家注册</h1>
+    <div class="register-box">
+      <div class="form-group">
+        <label>商家名称</label>
+        <input id="user" type="text" class="form-control" placeholder="请输入需要注册的商家名称">
+      </div>
+      <!-- 
+        form action图片上传到后台的路径
+        -->
+      <label>商家logo</label>
+      <form id="upload-logo" action="/api/admin/upload-logo" enctype="multipart/form-data" method="post">
+        <!-- <input type="text" name="imageName"/> -->
+        <input id="logo" type="file" name="test" />
+        <!-- <input type="submit" value="Upload"> -->
+      </form>
+      <img id="logo-img" width="100" style="margin:10px;"/>
+
+
+      <div class="form-group">
+        <label>店铺描述</label>
+        <textarea id="description" cols="50" rows="5" class="form-control" placeholder="请输入店铺描述"></textarea>
+      </div>
+      <div class="form-group">
+        <label>密码</label>
+        <input id="psd" type="password" class="form-control" placeholder="请输入密码">
+      </div>
+      <div class="form-group">
+        <label>确认密码</label>
+        <input id="comfirmPsd" type="password" class="form-control" placeholder="请再次输入密码">
+      </div>
+
+      <button id="register-btn" type="button" class="btn btn-success btn-block">注册</button>
+      <button type="button" class="btn btn-danger btn-block">取消</button>
+    </div>
+    <div>
+      已有账户？<a href="/admin/login">请登录！</a>
+    </div>
+    <div>
+       <a href="/">返回商城首页！</a>
+    </div>
+    <script src="/public/js/seller/register.js"></script>
+        
+  </body>
+</html>

@@ -1,0 +1,100 @@
+{% extends './layout.html' %}
+
+{% block content %}
+<h1>搜索到的产品</h1>    
+<div class="container">
+  
+   <div style="margin:10px auto;padding-left:10px">
+    排序： <button class="btn btn-success"><a href="/search?keyword={{keyword}}&sort=1">升序</a></button>
+          <button class="btn btn-success"><a href="/search?keyword={{keyword}}&sort=-1">降序</a></button>
+          <button class="btn btn-success"><a href="/search">默认排序</a></button>
+  </div> 
+
+  <div class="goods-list">
+ 
+      {% for goods in allgoods %}
+      <div class="goods-item">
+        <a href="/details?id={{goods._id.toString()}}">
+          <img src="{{goods.pic}}" style="width:195px;height:180px"/>
+          <h4>{{goods.name}}</h4>
+          <p>{{goods.descri}}</p>
+          <p>{{goods.color_cre}}&nbsp;{{goods.meter_cre}}</p>
+          <p>{{goods.seller.sellername}}</p>
+        </a>
+      </div>
+      {% endfor %}
+      <div style="clear:both"></div>
+      <nav aria-label="Page navigation" style="text-align:center">
+        <ul class="pagination">
+          <li class="{{preClass}}">
+            <a href="{{preUrl}}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+
+          {% for urlObj in urls %}
+          <li class="{{urlObj.class}}"><a href="{{urlObj.url}}">{{urlObj.index}}</a></li>
+          {% endfor %}
+
+          <li  class="{{nextClass}}">
+            <a href="{{nextUrl}}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+    </nav>
+
+  </div> 
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}
+{% block css %}
+  <style>
+    a{
+      text-decoration: none;
+    }
+    .container{
+      width: 80%;
+      margin: 10px auto;
+      background: lavender;
+      padding: 0;
+    }
+
+    .goods-item{
+      text-align: center;
+      width: 25%;
+      padding: 10px;
+      float: left;
+    }
+    .goods-item a{
+      display: block;
+    }
+    .goods-item img{
+      width: 100%;
+      display: block;
+    }
+    .goods-item h4{
+      color: lightcoral;
+    }
+    .goods-item p{
+      color: darkgray;
+    }
+  
+  </style>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+
+{% extends './layout.html' %}
+
+
+{% block content %}
+<h1>订单列表</h1>
+{% if isShow %}
+<table class="table">
+    <tr class="tr">
+        <th>购买用户ID</th>
+        <th>名字</th>
+        <th>描述</th>
+        <th>尺码</th>
+        <th>款式</th>
+        <th>图片</th>
+    </tr>
+    {% for goods in goodslist %}
+    
+    <tr>
+        <td>{{goods.buyer.toString()}}</td>
+        <td>{{goods.name}}</td>
+        <td>{{goods.price}}</td>
+        <td>
+            {% for style in goods.selectSize %}
+            {{style}}
+            {% endfor %}
+        </td>
+        <td> 
+            {% for style in goods.selectStyle %}
+            {{style}}
+            {% endfor %}
+        </td>
+        <td><img src="{{goods.pic}}" style="height:30px;width:50px"/></td>
+        
+    </tr>
+    {% endfor %}
+
+
+</table>
+
+<nav aria-label="Page navigation" style="text-align:center">
+  <ul class="pagination">
+    <li class="{{preClass}}">
+      <a href="{{preUrl}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+
+    {% for urlObj in urls %}
+    <li class="{{urlObj.class}}"><a href="{{urlObj.url}}">{{urlObj.index}}</a></li>
+    {% endfor %}
+
+    <li  class="{{nextClass}}">
+      <a href="{{nextUrl}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+{% else %}
+<p>目前你还没有商品，请先添加商品</p>
+{% endif %}
+<script src="/public/js/seller/deletelist.js"></script> 
+{% endblock %}
+        
+ 
+
+        
